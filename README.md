@@ -6,3 +6,9 @@ https://youtube.com/shorts/oZ-VCFDCg7c?si=gP4_JsThmgY18wXq
 link to youtube video
 https://github.com/BoitumeloQ/PROG-PART-1/edit/main/README.md
 link to the github repository
+
+//BEGINNING OF PART 2
+IM GONNA RENAME THE TO POEPROGPART,
+THEN IM GONNA UPLOAD THE FILES AGAIN.
+
+LINK TO THE VIDEO PART 2
