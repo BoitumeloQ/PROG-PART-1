@@ -18,7 +18,7 @@ class Login {
     private String lastName;
     
     private boolean loginSuccessful;
-    private Object Pattern;
+    
     
     public Login(){
         
@@ -87,6 +87,10 @@ class Login {
            return "Username or password incorrect; please try again. ";
        }
    }
+
+    boolean isLoggedIn() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
 
     

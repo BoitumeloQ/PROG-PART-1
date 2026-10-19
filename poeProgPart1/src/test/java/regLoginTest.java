@@ -138,7 +138,7 @@ public class regLoginTest {
             throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
 
-        private boolean checkPasswordComplexity(String chsecke99) {
+        private boolean checkPasswordComplexity(String ch&&sec@ke99) static {
             throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
 
