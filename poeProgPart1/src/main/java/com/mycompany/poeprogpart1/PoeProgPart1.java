@@ -9,7 +9,6 @@ package com.mycompany.poeprogpart1;
  * @author cash coverters
  */
 import java.util.Scanner;
-import org.json.simple.JSONObject;
 public class PoeProgPart1 {
 
     private static Object msg;
@@ -84,6 +83,8 @@ public class PoeProgPart1 {
                    System.out.println("Option 1: Send Messages");
                    System.out.println("Option 2: Show reently sent messages");
                    System.out.println("Option 3: Quit");
+                   //PART 3-Formative Assessment
+                   System.out.println("Option 4: Stored Messages");
                    System.out.println("Choose an option: ");
                    
                    String menuInput=myInput.nextLine();
@@ -93,7 +94,7 @@ public class PoeProgPart1 {
                        chooseOption=Integer.parseInt(menuInput);
                    }
                    catch (NumberFormatException e){
-                       System.out.println("Please enter a number: (1, 2 or 3). ");
+                       System.out.println("Please enter a number: (1, 2, 3 or 4 ). ");
                        continue;
                    }
                    if(chooseOption ==1){
@@ -142,7 +143,7 @@ public class PoeProgPart1 {
                 System.out.print("Enter recipient cell number(with international code,e.g,+271345678): ");
                 recipient=myInput.nextLine();
                 //HERE I WAS INSTANTIATING A NEW MESSAGES OBJCT WITH THE MESSAGE DETAILS
-                Messages tempMsg= new Messages (i, recipient, "test");
+                Messages tempMsg= new Messages (recipient, i, "test", "Hi Mike, can you join us for dinner tonight?");
                 String checkResult=tempMsg.checkRecipientCell();
                 System.out.println(checkResult);
                 //HERE IT VALIDATES THE CELL NUMBER  BY CALLING THE CELL RECIPIENT METHOD()
@@ -171,6 +172,9 @@ public class PoeProgPart1 {
                 System.out.println(" 1) Send messages " );
                 System.out.println(" 2) Disregard Message ");
                 System.out.println(" 3) Store Message to send later ");
+                //Part 3 of POE required 4th option of storing messages
+                System.out.println(" 4) Stored Messages ");
+                System.out.println(" 5) Quit ");
                 System.out.println("Choose an option: ");
                 //IT THEN READS USERS CHOICE AND PARSES IT INTO AN INTEGER INSIDE A TRY BLOCK
                 //AND HANDLES INVALID NUMBER FORMATS
@@ -197,10 +201,77 @@ public class PoeProgPart1 {
             System.out.println(Message.printMessages());
         }
     }
-
+    //PART 3: THIS IS THE MENU FOR OPTION 4.IT LOOPS SO THE USER CAN CHECK THE LONGEST MESSAGE
+    //SEARCH AND DELETE STUFF IN ONE GO BEFORE GOING BACK TO THE MAIN MENU
+    
+    private static void storedMessagesMenu(Scanner myInput, String firstName, String lastName){
+        boolean running = true;
+        while(running){
+             System.out.println("\n--- STORED MESSAGES MENU ---");
+            System.out.println("a. Display sender and recipient of all stored messages");
+            System.out.println("b. Display the longest stored message");
+            System.out.println("c. Search by Message ID (display recipient and message)");
+            System.out.println("d. Search all messages for a particular recipient");
+            System.out.println("e. Delete message using message hash");
+            System.out.println("f. Display full report of all stored messages");
+            System.out.println("g. Back to Main Menu");
+            System.out.print("Select an option (a-g): ");
+            
+            //I put .toLowerCase() if they type A so that it would still work like lowercase
+            
+            String choice = myInput.nextLine().toLowerCase();
+            
+            if (choice.equals("a")){
+                boolean found= false;
+                
+                for ( int i=0; i< Message.messageStatusArray.size();i++){
+                    if(Message.messageStatusArray.get(i).equals("Stored")){
+                        System.out.println("Recipient: "+ Message.allRecipients.get(i));
+                        found = true;
+                        System.out.println();
+                        
+                    }
+                }
+                if(!found){
+                    System.out.println("No stored messages available.");
+                }
+            }
+            else if(choice.equals("b")){
+                System.out.println(Message.displayLongestMessage() + "Longest Message: ");
+                
+            }
+            else if (choice.equals("c")){;
+                System.out.print("Enter Message ID: ");
+                String id= myInput.nextLine();
+                System.out.println(Message.searchByMessageID(id));
+            }
+            else if(choice.equals("d")){
+              System.out.print("Enter Recipient number: ");
+            String recip= myInput.nextLine();
+            System.out.println(Message.searchByRecipient(recip));
+            }
+            else if(choice.equals("e")){
+                System.out.print("Enter messgae Hash: ");
+                String hash = myInput.nextLine();
+                System.out.println(Message.deleteByHash(hash));
+            }
+            else if(choice.equals("f")){
+                System.out.println(Message.displayReport());
+            }
+            else if(choice.equals("g")){
+            //Break the loop and go back
+            running= false;
+        }
+            else{
+                    System.out.println("Invalid option");
+                    }
+            
+        }
+    }
     private static class login extends Login {
 
         public login() {
         }
     }
+    
 }
